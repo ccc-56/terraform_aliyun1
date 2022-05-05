@@ -33,7 +33,7 @@ resource "alicloud_instance" "web" {
   instance_type        = "${data.alicloud_instance_types.c1g1.instance_types.0.id}"
   system_disk_category = "cloud_efficiency"
   security_groups      = ["${alicloud_security_group.default.id}"]
-  instance_name        = "web"
+  instance_name        = "web1"
   vswitch_id           = "vsw-8vbrmlwa2ouiq370jfgfv"
 }
 

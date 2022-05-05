@@ -2,3 +2,5 @@ variables.tf
 .terraform/
 .terraform*
 terraform.tfstate.backup
+.gitignore/
+.git*
