@@ -1,3 +1,8 @@
+####setup a ec2 instance with public ip and another 21G disk
+####
+####
+
+
 terraform {
   required_providers {
     alicloud = {
@@ -34,12 +39,20 @@ resource "alicloud_instance" "web" {
   system_disk_category = "cloud_efficiency"
   security_groups      = ["${alicloud_security_group.default.id}"]
   instance_name        = "web1"
-  vswitch_id           = "vsw-8vbrmlwa2ouiq370jfgfv"
+  vswitch_id           = "${var.switchid}"
+  internet_max_bandwidth_out = 4
+
+  data_disks {
+    name        = "disk2"
+    size        = 20
+    category    = "cloud_efficiency"
+    description = "disk2"
+  }
 }
 
 # Create security group
 resource "alicloud_security_group" "default" {
   name        = "default"
   description = "default"
-  vpc_id      = "vpc-8vberb7dmsdjrfg9j2zwq"
+  vpc_id      = "${var.vpcid}"
 }
