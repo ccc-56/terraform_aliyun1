@@ -41,6 +41,7 @@ resource "alicloud_instance" "web" {
   instance_name        = "web1"
   vswitch_id           = "${var.switchid}"
   internet_max_bandwidth_out = 4
+  key_name = "${data.alicloud_ecs_key_pairs.ali1.pairs.0.id}"
 
   data_disks {
     name        = "disk2"
@@ -48,6 +49,15 @@ resource "alicloud_instance" "web" {
     category    = "cloud_efficiency"
     description = "disk2"
   }
+}
+
+data "alicloud_ecs_key_pairs" "ali1" {
+  ids        = ["dongzh"]
+  name_regex = "dongzh"
+}
+
+output "first_ecs_key_pair_id" {
+  value = data.alicloud_ecs_key_pairs.ali1.pairs.0.id
 }
 
 # Create security group
