@@ -62,7 +62,7 @@ resource "alicloud_db_instance" "mydb1" {
   engine               = "MySQL"
   engine_version       = "5.7"
   instance_type        = "mysql.n1.micro.1"
-  instance_storage     = "23"
+  instance_storage     = "30"
   instance_charge_type = "Postpaid"
   instance_name        = var.db1name
   vswitch_id           = "${var.switchiddb}"
