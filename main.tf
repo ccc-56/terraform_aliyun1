@@ -44,7 +44,7 @@ resource "alicloud_instance" "web" {
 
   data_disks {
     name        = "disk2"
-    size        = 20
+    size        = 21
     category    = "cloud_efficiency"
     description = "disk2"
   }
